@@ -2,18 +2,10 @@ package jms2db;
 
 import java.beans.PropertyVetoException;
 import java.sql.SQLException;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.Exchanger;
-
-import javax.jms.Message;
 
 public class JMSThread implements Runnable {
 	JMSConsumer consumer;
 	MessageDAO messageDAO;
-	BlockingQueue<Message> exchangeData = new ArrayBlockingQueue<>(1);
-	Exchanger<Boolean> exchangeResult = new Exchanger<>();
-
 	boolean isClosed = false;
 
 	public JMSThread() throws PropertyVetoException, SQLException {
