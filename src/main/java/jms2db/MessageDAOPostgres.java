@@ -21,7 +21,7 @@ public class MessageDAOPostgres implements MessageDAO {
 	public static final String SQL_TABLE = "message";
 
 	public static final String SQL_CREATE = "CREATE TABLE IF NOT EXISTS " + SQL_TABLE
-			+ " (id BIGSERIAL PRIMARY KEY, jms_type VARCHAR(255), jms_message_id VARCHAR(255), jms_correlation_id VARCHAR(255), jms_destination VARCHAR(255), jms_reply_to VARCHAR(255), jms_delivery_mode INTEGER, jms_redelivered BOOLEAN, jms_priority INTEGER, jms_expiration BIGINT, jms_timestamp TIMESTAMP, jms_data XML, created TIMESTAMP DEFAULT NOW())";
+			+ " (id BIGSERIAL PRIMARY KEY, jms_type VARCHAR(255), jms_message_id VARCHAR(255), jms_correlation_id VARCHAR(255), jms_destination VARCHAR(255), jms_reply_to VARCHAR(255), jms_delivery_mode INTEGER, jms_redelivered BOOLEAN, jms_priority INTEGER, jms_expiration BIGINT, jms_timestamp TIMESTAMPTZ, jms_data XML, created TIMESTAMPTZ DEFAULT NOW())";
 
 	public static final String SQL_INSERT = "INSERT INTO " + SQL_TABLE
 			+ " (jms_type, jms_message_id, jms_correlation_id, jms_destination, jms_reply_to, jms_delivery_mode, jms_redelivered, jms_priority, jms_expiration, jms_timestamp, jms_data) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, XMLPARSE(DOCUMENT ?))";
